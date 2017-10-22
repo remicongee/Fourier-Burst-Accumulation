@@ -15,7 +15,7 @@ for image_idx = 2 : image_number
     for channel_idx = 1 : channel_number
         fixed = image_fixed(:,:,channel_idx);    
         moving = moving_image(:,:,channel_idx);
-        moving_registered = imregister(moving, fixed,'rigid',optimizer, metric);
+        moving_registered = imregister(moving, fixed,'affine',optimizer, metric);
         current = cat(channel_number, current, moving_registered);
     end
     burst_registered = cat(dim, burst_registered, current);
