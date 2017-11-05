@@ -2,7 +2,8 @@
 p = 35;
 ks = 50;
 burst_path = 'images\auvers\';
-[burst, image_number] = read_burst(burst_path);
+% [burst, image_number] = read_burst(burst_path);
+[burst, image_number] = register_burst(burst_path);
 
 %% Read first image for configuration
 first_image = burst(:,:,:,1);
