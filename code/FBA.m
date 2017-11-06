@@ -25,5 +25,6 @@ end
 
 %% Restore image
 % weight = cat(3, weight, weight, weight);
+% Lack sharpening.
 image_restored = ifft2(divmat(acc_fft, weight), 'symmetric');
 image(uint8(image_restored));
