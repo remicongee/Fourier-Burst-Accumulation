@@ -1,4 +1,4 @@
-function [ burst_registered ] = register_burst( burst_path, isRGB )
+function [ burst_registered, image_number ] = register_burst( burst_path, isRGB )
 %REGISTER_BURST Image registration for RGB or GrayScale.
 %   The fixed image is the first one of the burst readed.
 %   Return burst_registered by (length, height, channel, number)
