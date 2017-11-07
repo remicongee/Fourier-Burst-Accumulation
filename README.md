@@ -1,6 +1,9 @@
 # Fourier-Burst-Accumulation
 Implemetation of "Removing Camera Shake via Weighted Fourier Burst Accumulation".
 
+# How to use
+Run the FBA.m in the folder "code".
+
 # Useful links
 [FBA](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7120097)
 
