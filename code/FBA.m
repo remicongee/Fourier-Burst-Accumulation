@@ -24,7 +24,20 @@ for index = 2 : image_number
 end
 
 %% Restore image
-% weight = cat(3, weight, weight, weight);
-% Lack sharpening.
 image_restored = ifft2(divmat(acc_fft, weight), 'symmetric');
-image(uint8(image_restored));
+imwrite(uint8(image_restored),[burst_path 'result\output.png'],'png');
+
+%% Sharpening
+[image_afterDn,isRGB] = read_image([burst_path 'result\denoised.png']); % image denoised on IPOL
+gaussian_s = get_gau_ker(3);
+image_s = Gaussian3(image_restored, gaussian_s);
+% image_s = Gaussian3(image_afterDn, gaussian_s);
+acc_s = 2*double(image_afterDn)-image_s;
+acc_fin = acc_s+0.4*(image_restored-double(image_afterDn));
+imwrite(uint8(image_restored),[burst_path 'result\output.png'],'png');
+
+%% Show images and evaluate
+experiences=ones(image_size(1),image_size(2),image_size(3),image_number+1);
+experiences(:,:,:,1:image_number)=burst(:,:,:,1:image_number);
+experiences(:,:,:,image_selected+1)=acc_fin;
+showimages(experiences);
